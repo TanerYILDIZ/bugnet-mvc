@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4915142B-0215-4E7E-A410-A76997B924C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1E16919D-5589-4450-BDD3-4B8242244EDB}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BugNET", "src\BugNET\BugNET.xproj", "{A2CA4470-63D1-417C-884C-440D87228CDD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2CA4470-63D1-417C-884C-440D87228CDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2CA4470-63D1-417C-884C-440D87228CDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2CA4470-63D1-417C-884C-440D87228CDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2CA4470-63D1-417C-884C-440D87228CDD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A2CA4470-63D1-417C-884C-440D87228CDD} = {4915142B-0215-4E7E-A410-A76997B924C5}
+	EndGlobalSection
+EndGlobal
