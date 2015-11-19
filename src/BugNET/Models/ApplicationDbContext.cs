@@ -30,7 +30,7 @@ namespace BugNET.Models
         public virtual DbSet<IssueVote> IssueVotes { get; set; }
         public virtual DbSet<IssueWorkReport> IssueWorkReports { get; set; }
         public virtual DbSet<Language> Languages { get; set; }
-        public virtual DbSet<RolePermission> Permissions { get; set; }
+        //public virtual DbSet<RolePermission> Permissions { get; set; }
         public virtual DbSet<Category> ProjectCategories { get; set; }
         public virtual DbSet<CustomField> ProjectCustomFields { get; set; }
         public virtual DbSet<CustomFieldSelection> ProjectCustomFieldSelections { get; set; }
@@ -49,7 +49,7 @@ namespace BugNET.Models
         public virtual DbSet<RelatedIssue> RelatedIssues { get; set; }
         public virtual DbSet<RequiredField> RequiredFieldList { get; set; }
         //public virtual DbSet<Role> Roles { get; set; }
-        public virtual DbSet<UserProfile> UserProfiles { get; set; }
+       // public virtual DbSet<UserProfile> UserProfiles { get; set; }
         public virtual DbSet<UserProject> UserProjects { get; set; }
 
         //public virtual DbSet<UserRole> UserRoles { get; set; }
@@ -91,20 +91,20 @@ namespace BugNET.Models
             builder.Entity<Issue>()
                 .HasMany(e => e.Votes)
                 .WithOne(e => e.Issue)
-                .ForeignKey(e => e.IssueId)
-                .WillCascadeOnDelete(false);
+                .HasForeignKey(e => e.IssueId);
+                //.WillCascadeOnDelete(false);
 
-            //builder.Entity<RandomThing>().HasOne(e => e.Bag).WithMany(p => p.RandomThings).ForeignKey(e => e.BagId);
+            //builder.Entity<RandomThing>().HasOne(e => e.Bag).WithMany(p => p.RandomThings).HasForeignKey(e => e.BagId);
             builder.Entity<Issue>()
                 .HasMany(e => e.RelatedIssues)
                 .WithOne(e => e.PrimaryIssue)
-                .ForeignKey(e => e.PrimaryIssueId);
+                .HasForeignKey(e => e.PrimaryIssueId);
 
             builder.Entity<Issue>()
                 .HasMany(e => e.RelatedIssues1)
                 .WithOne(e => e.SecondaryIssue)
-                .ForeignKey(e => e.SecondaryIssueId)
-                .WillCascadeOnDelete(false);
+                .HasForeignKey(e => e.SecondaryIssueId)
+                .OnDelete(Microsoft.Data.Entity.Metadata.DeleteBehavior.Restrict);
 
             builder.Entity<IssueWorkReport>()
                 .Property(e => e.Duration)
@@ -119,47 +119,56 @@ namespace BugNET.Models
             builder.Entity<Category>()
                 .HasMany(e => e.Issues)
                 .WithOne(e => e.Category)
-                .ForeignKey(e => e.CategoryId);
+                .HasForeignKey(e => e.CategoryId);
 
             builder.Entity<CustomField>()
                 .HasMany(e => e.ProjectCustomFieldValues)
                 .WithOne(e => e.ProjectCustomFields)
-                .WillCascadeOnDelete(false);
+                .OnDelete(Microsoft.Data.Entity.Metadata.DeleteBehavior.Restrict);
 
             builder.Entity<Milestone>()
                 .HasMany(e => e.Issues)
                 .WithOne(e => e.Milestone)
-                .ForeignKey(e => e.ilestoneId);
+                .HasForeignKey(e => e.ilestoneId);
 
             builder.Entity<Milestone>()
                 .HasMany(e => e.Issues1)
                 .WithOne(e => e.Milestone1)
-                .ForeignKey(e => e.AffectedMilestoneId);
+                .HasForeignKey(e => e.AffectedMilestoneId);
 
             builder.Entity<Priority>()
                 .HasMany(e => e.Issues)
                 .WithOne(e => e.Priority)
-                .ForeignKey(e => e.PriorityId);
+                .HasForeignKey(e => e.PriorityId);
 
             builder.Entity<Resolution>()
                 .HasMany(e => e.Issues)
                 .WithOne(e => e.Resolution)
-                .ForeignKey(e => e.ResolutionId);
+                .HasForeignKey(e => e.ResolutionId);
 
             builder.Entity<Project>()
                 .HasOne(e => e.DefaultValues)
                 .WithOne(e => e.Projects)
-                .WillCascadeOnDelete();
+                .OnDelete(Microsoft.Data.Entity.Metadata.DeleteBehavior.Cascade);
 
-            builder.Entity<Project>()
-                .HasMany(e => e.Roles)
-                .WithOne(e => e.Project)
-                .WillCascadeOnDelete();
+            //builder.Entity<Project>()
+            //    .HasMany(e => e.Roles)
+            //    .WithOne(e => e.Project)
+            //    .OnDelete(Microsoft.Data.Entity.Metadata.DeleteBehavior.Cascade);
 
             builder.Entity<ProjectStatus>()
                 .HasMany(e => e.Issues)
                 .WithOne(e => e.Status)
-                .ForeignKey(e => e.StatusId);
+                .HasForeignKey(e => e.StatusId);
+
+            builder.Entity<RelatedIssue>()
+                .HasKey(e => new { e.PrimaryIssueId, e.SecondaryIssueId, e.RelationType });
+
+            builder.Entity<UserProject>()
+               .HasKey(e => new { e.UserId, e.ProjectId });
+
+            builder.Entity<UserProject>()
+               .HasKey(e => new { e.UserId, e.ProjectId });
         }
     }
 }

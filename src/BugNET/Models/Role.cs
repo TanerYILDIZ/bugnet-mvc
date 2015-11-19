@@ -12,8 +12,8 @@ namespace BugNET.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Role()
         {
-            UserRoles = new HashSet<UserRole>();
-            Permissions = new HashSet<RolePermission>();
+            //UserRoles = new HashSet<UserRole>();
+            //Permissions = new HashSet<RolePermission>();
         }
 
         [Key]
@@ -33,10 +33,10 @@ namespace BugNET.Models
 
         public virtual Project Project { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserRole> UserRoles { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<UserRole> UserRoles { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RolePermission> Permissions { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<RolePermission> Permissions { get; set; }
     }
 }

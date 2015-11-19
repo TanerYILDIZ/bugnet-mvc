@@ -9,13 +9,8 @@ namespace BugNET.Models
     [Table("BugNet_UserProjects")]
     public partial class UserProject
     {
-        [Key]
-        [Column(Order = 0)]
         public Guid UserId { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ProjectId { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

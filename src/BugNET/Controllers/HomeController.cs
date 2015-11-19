@@ -15,7 +15,7 @@ namespace BugNET.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "The future is MVC, the future is BugNET-MVC!";
 
             return View();
         }
@@ -29,7 +29,7 @@ namespace BugNET.Controllers
 
         public IActionResult Error()
         {
-            return View("~/Views/Shared/Error.cshtml");
+            return View();
         }
     }
 }

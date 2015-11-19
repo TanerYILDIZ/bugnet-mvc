@@ -21,5 +21,5 @@ namespace BugNET.Services
             // Plug in your SMS service here to send a text message.
             return Task.FromResult(0);
         }
-    }  
+    }
 }

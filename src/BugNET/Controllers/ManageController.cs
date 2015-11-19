@@ -1,13 +1,15 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Security.Claims;
 using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Mvc;
+using Microsoft.Extensions.Logging;
 using BugNET.Models;
 using BugNET.Services;
 using BugNET.ViewModels.Manage;
-using Microsoft.Framework.Logging;
 
 namespace BugNET.Controllers
 {
