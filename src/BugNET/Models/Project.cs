@@ -75,6 +75,12 @@ namespace BugNET.Models
 
         public virtual DefaultValues DefaultValues { get; set; }
 
+        //[ForeignKey("ProjectManagerUserId ")]
+        public virtual ApplicationUser Manager { get; set; }
+
+        //[ForeignKey("ProjectManagerUserId ")]
+        public virtual ApplicationUser CreatedUser { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Issue> Issues { get; set; }
 

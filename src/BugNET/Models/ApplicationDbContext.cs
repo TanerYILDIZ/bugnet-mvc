@@ -7,16 +7,8 @@ using Microsoft.Data.Entity;
 
 namespace BugNET.Models
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, Guid>
     {
-        //protected override void OnModelCreating(builder builder)
-        //{
-        //    base.OnModelCreating(builder);
-        //    // Customize the ASP.NET Identity model and override the defaults if needed.
-        //    // For example, you can rename the ASP.NET Identity table names and more.
-        //    // Add your customizations after calling base.OnModelCreating(builder);
-        //}
-
         public virtual DbSet<ApplicationLog> ApplicationLog { get; set; }
         public virtual DbSet<DefaultValues> DefaultValues { get; set; }
         public virtual DbSet<DefaultValuesVisibility> DefaultValuesVisibility { get; set; }
@@ -30,7 +22,6 @@ namespace BugNET.Models
         public virtual DbSet<IssueVote> IssueVotes { get; set; }
         public virtual DbSet<IssueWorkReport> IssueWorkReports { get; set; }
         public virtual DbSet<Language> Languages { get; set; }
-        //public virtual DbSet<RolePermission> Permissions { get; set; }
         public virtual DbSet<Category> ProjectCategories { get; set; }
         public virtual DbSet<CustomField> ProjectCustomFields { get; set; }
         public virtual DbSet<CustomFieldSelection> ProjectCustomFieldSelections { get; set; }
@@ -48,40 +39,19 @@ namespace BugNET.Models
         public virtual DbSet<QueryClause> QueryClauses { get; set; }
         public virtual DbSet<RelatedIssue> RelatedIssues { get; set; }
         public virtual DbSet<RequiredField> RequiredFieldList { get; set; }
-        //public virtual DbSet<Role> Roles { get; set; }
-       // public virtual DbSet<UserProfile> UserProfiles { get; set; }
         public virtual DbSet<UserProject> UserProjects { get; set; }
-
-        //public virtual DbSet<UserRole> UserRoles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-
-            //builder.Entity<ApplicationLog>()
-            //    .Property(e => e.Thread)
-            //    .IsUnicode(false);
-
-            //builder.Entity<ApplicationLog>()
-            //    .Property(e => e.Level)
-            //    .IsUnicode(false);
-
-            //builder.Entity<ApplicationLog>()
-            //    .Property(e => e.Logger)
-            //    .IsUnicode(false);
-
-            //builder.Entity<ApplicationLog>()
-            //    .Property(e => e.Message)
-            //    .IsUnicode(false);
-
-            //builder.Entity<ApplicationLog>()
-            //    .Property(e => e.Exception)
-            //    .IsUnicode(false);
+            // Customize the ASP.NET Identity model and override the defaults if needed.
+            // For example, you can rename the ASP.NET Identity table names and more.
+            // Add your customizations after calling base.OnModelCreating(builder);
 
             builder.Entity<DefaultValues>()
                 .Property(e => e.IssueEstimation)
                 .HasColumnType("decimal(5,2)");
-                //.HasPrecision(5, 2);
+            //.HasPrecision(5, 2);
 
             builder.Entity<Issue>()
                 .Property(e => e.Estimation)
@@ -92,9 +62,8 @@ namespace BugNET.Models
                 .HasMany(e => e.Votes)
                 .WithOne(e => e.Issue)
                 .HasForeignKey(e => e.IssueId);
-                //.WillCascadeOnDelete(false);
+            //.WillCascadeOnDelete(false);
 
-            //builder.Entity<RandomThing>().HasOne(e => e.Bag).WithMany(p => p.RandomThings).HasForeignKey(e => e.BagId);
             builder.Entity<Issue>()
                 .HasMany(e => e.RelatedIssues)
                 .WithOne(e => e.PrimaryIssue)
@@ -111,11 +80,6 @@ namespace BugNET.Models
                 //.HasPrecision(4, 2);
                 .HasColumnType("decimal(4,2)");
 
-            //builder.Entity<RolePermission>()
-            //    .HasMany(e => e.Roles)
-            //    .WithMany(e => e.Permissions)
-            //    .Map(m => m.ToTable("RolePermissions").MapLeftKey("PermissionId").MapRightKey("RoleId"));
-
             builder.Entity<Category>()
                 .HasMany(e => e.Issues)
                 .WithOne(e => e.Category)
@@ -129,7 +93,7 @@ namespace BugNET.Models
             builder.Entity<Milestone>()
                 .HasMany(e => e.Issues)
                 .WithOne(e => e.Milestone)
-                .HasForeignKey(e => e.ilestoneId);
+                .HasForeignKey(e => e.MilestoneId);
 
             builder.Entity<Milestone>()
                 .HasMany(e => e.Issues1)
@@ -151,6 +115,12 @@ namespace BugNET.Models
                 .WithOne(e => e.Projects)
                 .OnDelete(Microsoft.Data.Entity.Metadata.DeleteBehavior.Cascade);
 
+            builder.Entity<Project>()
+             .HasMany(e => e.Issues)
+             .WithOne(e => e.Project)
+             .HasForeignKey(e => e.ProjectId)
+             .OnDelete(Microsoft.Data.Entity.Metadata.DeleteBehavior.Cascade);
+
             //builder.Entity<Project>()
             //    .HasMany(e => e.Roles)
             //    .WithOne(e => e.Project)
@@ -167,8 +137,17 @@ namespace BugNET.Models
             builder.Entity<UserProject>()
                .HasKey(e => new { e.UserId, e.ProjectId });
 
-            builder.Entity<UserProject>()
-               .HasKey(e => new { e.UserId, e.ProjectId });
+            //builder.Entity<Project>()
+            //   .HasOne(e => e.CreatedUser)
+            //   .WithMany(e => e.Projects)
+            //   .HasForeignKey(e => e.ProjectCreatorUserId)
+            //   .HasConstraintName("FK_BugNet_Projects_Users");
+
+            //builder.Entity<Project>()
+            //   .HasOne(e => e.Manager)
+            //   .WithMany(e => e.ManagedProjects)
+            //   .HasForeignKey(e => e.ProjectManagerUserId)
+            //   .HasConstraintName("FK_BugNet_Projects_Users1");
         }
     }
 }

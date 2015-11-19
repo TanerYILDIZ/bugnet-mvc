@@ -68,7 +68,7 @@ namespace BugNET.Models
         public DateTime? DueDate { get; set; }
 
         [Column("IssueMilestoneId")]
-        public int? ilestoneId { get; set; }
+        public int? MilestoneId { get; set; }
 
         [Column("IssueVisibility")]
         public int Visibility { get; set; }

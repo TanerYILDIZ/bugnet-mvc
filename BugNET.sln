@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BugNET", "src\BugNET\BugNET.xproj", "{E4A5EFD5-0A22-4871-873B-2A8934635883}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "BugNET.Database", "src\BugNET.Database\BugNET.Database.sqlproj", "{E02A7722-FA25-438F-AEC8-794B57D32658}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,11 +24,18 @@ Global
 		{E4A5EFD5-0A22-4871-873B-2A8934635883}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4A5EFD5-0A22-4871-873B-2A8934635883}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4A5EFD5-0A22-4871-873B-2A8934635883}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E02A7722-FA25-438F-AEC8-794B57D32658}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E02A7722-FA25-438F-AEC8-794B57D32658}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E02A7722-FA25-438F-AEC8-794B57D32658}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E02A7722-FA25-438F-AEC8-794B57D32658}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E02A7722-FA25-438F-AEC8-794B57D32658}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E02A7722-FA25-438F-AEC8-794B57D32658}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E4A5EFD5-0A22-4871-873B-2A8934635883} = {E96E6C17-D736-4CBB-8580-26D4735080DF}
+		{E02A7722-FA25-438F-AEC8-794B57D32658} = {E96E6C17-D736-4CBB-8580-26D4735080DF}
 	EndGlobalSection
 EndGlobal
