@@ -799,14 +799,14 @@ namespace BugNET.Migrations
                 name: "FK_IdentityUserClaim<string>_ApplicationUser_UserId",
                 table: "AspNetUserClaims",
                 column: "UserId",
-                principalTable: "AspNetUsers",
+                principalTable: "ApplicationUser",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
             migrationBuilder.AddForeignKey(
                 name: "FK_IdentityUserLogin<string>_ApplicationUser_UserId",
                 table: "AspNetUserLogins",
                 column: "UserId",
-                principalTable: "AspNetUsers",
+                principalTable: "ApplicationUser",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
             migrationBuilder.AddForeignKey(
@@ -820,7 +820,7 @@ namespace BugNET.Migrations
                 name: "FK_IdentityUserRole<string>_ApplicationUser_UserId",
                 table: "AspNetUserRoles",
                 column: "UserId",
-                principalTable: "AspNetUsers",
+                principalTable: "ApplicationUser",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
         }
@@ -887,14 +887,14 @@ namespace BugNET.Migrations
                 name: "FK_IdentityUserClaim<string>_ApplicationUser_UserId",
                 table: "AspNetUserClaims",
                 column: "UserId",
-                principalTable: "AspNetUsers",
+                principalTable: "ApplicationUser",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
             migrationBuilder.AddForeignKey(
                 name: "FK_IdentityUserLogin<string>_ApplicationUser_UserId",
                 table: "AspNetUserLogins",
                 column: "UserId",
-                principalTable: "AspNetUsers",
+                principalTable: "ApplicationUser",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
             migrationBuilder.AddForeignKey(
@@ -908,7 +908,7 @@ namespace BugNET.Migrations
                 name: "FK_IdentityUserRole<string>_ApplicationUser_UserId",
                 table: "AspNetUserRoles",
                 column: "UserId",
-                principalTable: "AspNetUsers",
+                principalTable: "ApplicationUser",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
         }

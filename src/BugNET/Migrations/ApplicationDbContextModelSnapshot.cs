@@ -96,7 +96,7 @@ namespace BugNET.Migrations
                     b.HasIndex("NormalizedUserName")
                         .HasAnnotation("Relational:Name", "UserNameIndex");
 
-                    b.HasAnnotation("Relational:TableName", "AspNetUsers");
+                    b.HasAnnotation("Relational:TableName", "ApplicationUser");
                 });
 
             modelBuilder.Entity("BugNET.Models.Category", b =>

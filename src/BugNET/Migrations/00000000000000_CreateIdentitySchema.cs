@@ -25,7 +25,7 @@ namespace BugNET.Migrations
                     table.PrimaryKey("PK_IdentityRole", x => x.Id);
                 });
             migrationBuilder.CreateTable(
-                name: "AspNetUsers",
+                name: "ApplicationUser",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
@@ -83,7 +83,7 @@ namespace BugNET.Migrations
                     table.ForeignKey(
                         name: "FK_IdentityUserClaim<string>_ApplicationUser_UserId",
                         column: x => x.UserId,
-                        principalTable: "AspNetUsers",
+                        principalTable: "ApplicationUser",
                         principalColumn: "Id");
                 });
             migrationBuilder.CreateTable(
@@ -101,7 +101,7 @@ namespace BugNET.Migrations
                     table.ForeignKey(
                         name: "FK_IdentityUserLogin<string>_ApplicationUser_UserId",
                         column: x => x.UserId,
-                        principalTable: "AspNetUsers",
+                        principalTable: "ApplicationUser",
                         principalColumn: "Id");
                 });
             migrationBuilder.CreateTable(
@@ -122,7 +122,7 @@ namespace BugNET.Migrations
                     table.ForeignKey(
                         name: "FK_IdentityUserRole<string>_ApplicationUser_UserId",
                         column: x => x.UserId,
-                        principalTable: "AspNetUsers",
+                        principalTable: "ApplicationUser",
                         principalColumn: "Id");
                 });
             migrationBuilder.CreateIndex(
@@ -131,11 +131,11 @@ namespace BugNET.Migrations
                 column: "NormalizedName");
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",
-                table: "AspNetUsers",
+                table: "ApplicationUser",
                 column: "NormalizedEmail");
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
-                table: "AspNetUsers",
+                table: "ApplicationUser",
                 column: "NormalizedUserName");
         }
 
@@ -146,7 +146,7 @@ namespace BugNET.Migrations
             migrationBuilder.DropTable("AspNetUserLogins");
             migrationBuilder.DropTable("AspNetUserRoles");
             migrationBuilder.DropTable("AspNetRoles");
-            migrationBuilder.DropTable("AspNetUsers");
+            migrationBuilder.DropTable("ApplicationUser");
         }
     }
 }
