@@ -1,0 +1,72 @@
+@model BugNET.Models.BugNet_Issues
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BugNet_Issues</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateCreated)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Disabled)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Disabled)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IssueDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IssueDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IssueDueDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IssueDueDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IssueEstimation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IssueEstimation)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IssueProgress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IssueProgress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IssueTitle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IssueTitle)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IssueVisibility)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IssueVisibility)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastUpdate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastUpdate)
+        </dd>
+    </dl>
+</div>
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.IssueId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</p>

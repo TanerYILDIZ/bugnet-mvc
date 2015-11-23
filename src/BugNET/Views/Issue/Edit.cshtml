@@ -1,0 +1,179 @@
+@model BugNET.Models.BugNet_Issues
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>BugNet_Issues</h4>
+        <hr />
+        <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="IssueId" />
+        <div class="form-group">
+            <label asp-for="DateCreated" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DateCreated" class="form-control" />
+                <span asp-validation-for="DateCreated" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="Disabled" />
+                    <label asp-for="Disabled"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="IssueAffectedMilestoneId" class="control-label col-md-2">IssueAffectedMilestoneId</label>
+            <div class="col-md-10">
+                <select asp-for="IssueAffectedMilestoneId" class="form-control" />
+                <span asp-validation-for="IssueAffectedMilestoneId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="IssueAssignedUserId" class="control-label col-md-2">IssueAssignedUserId</label>
+            <div class="col-md-10">
+                <select asp-for="IssueAssignedUserId" class="form-control" />
+                <span asp-validation-for="IssueAssignedUserId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="IssueCategoryId" class="control-label col-md-2">IssueCategoryId</label>
+            <div class="col-md-10">
+                <select asp-for="IssueCategoryId" class="form-control" />
+                <span asp-validation-for="IssueCategoryId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="IssueCreatorUserId" class="control-label col-md-2">IssueCreatorUserId</label>
+            <div class="col-md-10">
+                <select asp-for="IssueCreatorUserId" class="form-control" />
+                <span asp-validation-for="IssueCreatorUserId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="IssueDescription" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="IssueDescription" class="form-control" />
+                <span asp-validation-for="IssueDescription" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="IssueDueDate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="IssueDueDate" class="form-control" />
+                <span asp-validation-for="IssueDueDate" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="IssueEstimation" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="IssueEstimation" class="form-control" />
+                <span asp-validation-for="IssueEstimation" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="IssueMilestoneId" class="control-label col-md-2">IssueMilestoneId</label>
+            <div class="col-md-10">
+                <select asp-for="IssueMilestoneId" class="form-control" />
+                <span asp-validation-for="IssueMilestoneId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="IssueOwnerUserId" class="control-label col-md-2">IssueOwnerUserId</label>
+            <div class="col-md-10">
+                <select asp-for="IssueOwnerUserId" class="form-control" />
+                <span asp-validation-for="IssueOwnerUserId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="IssuePriorityId" class="control-label col-md-2">IssuePriorityId</label>
+            <div class="col-md-10">
+                <select asp-for="IssuePriorityId" class="form-control" />
+                <span asp-validation-for="IssuePriorityId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="IssueProgress" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="IssueProgress" class="form-control" />
+                <span asp-validation-for="IssueProgress" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="IssueResolutionId" class="control-label col-md-2">IssueResolutionId</label>
+            <div class="col-md-10">
+                <select asp-for="IssueResolutionId" class="form-control" />
+                <span asp-validation-for="IssueResolutionId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="IssueStatusId" class="control-label col-md-2">IssueStatusId</label>
+            <div class="col-md-10">
+                <select asp-for="IssueStatusId" class="form-control" />
+                <span asp-validation-for="IssueStatusId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="IssueTitle" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="IssueTitle" class="form-control" />
+                <span asp-validation-for="IssueTitle" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="IssueTypeId" class="control-label col-md-2">IssueTypeId</label>
+            <div class="col-md-10">
+                <select asp-for="IssueTypeId" class="form-control" />
+                <span asp-validation-for="IssueTypeId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="IssueVisibility" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="IssueVisibility" class="form-control" />
+                <span asp-validation-for="IssueVisibility" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="LastUpdate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="LastUpdate" class="form-control" />
+                <span asp-validation-for="LastUpdate" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="LastUpdateUserId" class="control-label col-md-2">LastUpdateUserId</label>
+            <div class="col-md-10">
+                <select asp-for="LastUpdateUserId" class="form-control" />
+                <span asp-validation-for="LastUpdateUserId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ProjectId" class="control-label col-md-2">ProjectId</label>
+            <div class="col-md-10">
+                <select asp-for="ProjectId" class="form-control" />
+                <span asp-validation-for="ProjectId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

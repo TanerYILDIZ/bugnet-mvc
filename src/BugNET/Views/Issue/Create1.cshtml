@@ -1,0 +1,139 @@
+@model BugNET.ViewModels.Issue.CreateIssueViewModel
+
+@{
+    ViewData["Title"] = "Create1";
+}
+
+<h2>New Issue</h2>
+
+<form asp-action="Create1">
+    <div class="form-horizontal">
+        <h4>New Issue</h4>
+        <hr />
+        <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Title" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger" />
+            </div>
+        </div>
+        @if (Model.VisiblityDefaults.DueDateVisibility) {
+        <div class="form-group">
+            <label asp-for="DueDate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DueDate" class="form-control" />
+                <span asp-validation-for="DueDate" class="text-danger" />
+            </div>
+        </div>
+        }
+        <div class="form-group">
+            <label asp-for="Estimation" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Estimation" class="form-control" />
+                <span asp-validation-for="Estimation" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="AffectedMilestoneId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="AffectedMilestoneId" asp-items="Model.Milestones" class="form-control">
+                    <option>-- Not specified --</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="AssignedUserId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="AssignedUserId" asp-items="Model.Users" class="form-control">
+                    <option>-- Not specified --</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CategoryId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="CategoryId" asp-items="Model.Categories" class="form-control">
+                    <option>-- Not specified --</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="MilestoneId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="MilestoneId" asp-items="Model.Milestones" class="form-control">
+                    <option>-- Not specified --</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="OwnerUserId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="OwnerUserId" asp-items="Model.Users" class="form-control">
+                    <option>-- Not specified --</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PriorityId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="PriorityId" asp-items="Model.Priorities" class="form-control">
+                    <option>-- Not specified --</option>
+                </select>
+            </div>
+        </div>
+       
+        <div class="form-group">
+            <label asp-for="ResolutionId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="ResolutionId" asp-items="Model.Resolutions" class="form-control">
+                    <option>-- Not specified --</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="StatusId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="StatusId" asp-items="Model.Status" class="form-control">
+                    <option>-- Not specified --</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="IssueTypeId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="IssueTypeId" asp-items="Model.IssueTypes" class="form-control">
+                    <option>-- Not specified --</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Visibility" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Visibility" class="form-control" />
+                <span asp-validation-for="Visibility" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
