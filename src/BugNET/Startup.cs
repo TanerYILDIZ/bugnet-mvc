@@ -95,6 +95,10 @@ namespace BugNET
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                    name: "Issue",
+                    template: "Project/{projectId}/{controller=Issue}/{action=Index}/{id?}");
+              
+                routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });

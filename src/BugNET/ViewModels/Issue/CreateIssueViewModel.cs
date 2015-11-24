@@ -8,11 +8,16 @@ namespace BugNET.ViewModels.Issue
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
-    public class CreateIssueViewModel
+    public class CreateIssueViewModel : ViewModelBase
     {
         [ScaffoldColumn(false)]
         [Key]
         public int IssueId { get; set; }
+
+        public string ProjectName { get; set; }
+
+        [ScaffoldColumn(false)]
+        public int ProjectId { get; set; }
 
         [Display(Name = "Title")]
         [Required(ErrorMessage = "An issue title is required")]

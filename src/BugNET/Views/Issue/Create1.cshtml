@@ -4,13 +4,19 @@
     ViewData["Title"] = "Create1";
 }
 
-<h2>New Issue</h2>
+<h2>Create</h2>
 
 <form asp-action="Create1">
     <div class="form-horizontal">
         <h4>New Issue</h4>
         <hr />
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="ProjectName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                @Model.ProjectName
+            </div>
+        </div>
         <div class="form-group">
             <label asp-for="Title" class="col-md-2 control-label"></label>
             <div class="col-md-10">

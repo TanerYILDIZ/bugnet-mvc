@@ -5,16 +5,22 @@ using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
 using BugNET.Models;
 using BugNET.ViewModels.Issue;
+using BugNET.Services;
+using Microsoft.Extensions.Logging;
 
 namespace BugNET.Controllers
 {
     public class IssueController : Controller
     {
         private ApplicationDbContext _context;
+        private readonly IEmailSender _emailSender;
+        private readonly ILogger _logger;
 
-        public IssueController(ApplicationDbContext context)
+        public IssueController(ApplicationDbContext context, IEmailSender emailSender, ILoggerFactory loggerFactory)
         {
-            _context = context;    
+            _context = context;
+            _emailSender = emailSender;
+            _logger = loggerFactory.CreateLogger<IssueController>();
         }
 
         // GET: Issue
@@ -59,23 +65,33 @@ namespace BugNET.Controllers
             return View();
         }
 
-        public IActionResult Create1()
-        {
+        // GET: Issue/Create1
+        [HttpGet]
+        public IActionResult Create1(int projectId)
+        {       
+            var project = _context.BugNet_Projects.Where(p => p.ProjectId == projectId).FirstOrDefault();
+            if (project == null)
+            {
+                return HttpNotFound("The projectId specified was not found");
+            }
+
+            var viewModel = new CreateIssueViewModel();
+
             BugNet_DefaultValuesVisibility visibility = new BugNet_DefaultValuesVisibility();
             BugNet_DefaultValues defaultValues = new BugNet_DefaultValues();
-
-            var viewModel = new CreateIssueViewModel()
-            {              
-                //AffectedMilestones = new SelectList(_context.BugNet_ProjectMilestones, "MilestoneId", "IssueAffectedMilestone"),
-                Categories = new SelectList(_context.BugNet_ProjectCategories, "CategoryId", "IssueCategory"),
-                Milestones = new SelectList(_context.BugNet_ProjectMilestones, "MilestoneId", "IssueMilestone"),
-                Users = new SelectList(_context.Users, "Id", "IssueOwnerUser"),
-                Priorities = new SelectList(_context.BugNet_ProjectPriorities, "PriorityId", "IssuePriority"),
-                Resolutions = new SelectList(_context.BugNet_ProjectResolutions, "ResolutionId", "IssueResolution"),
-                Status = new SelectList(_context.BugNet_ProjectStatus, "StatusId", "IssueStatus"),
-                IssueTypes = new SelectList(_context.BugNet_ProjectIssueTypes, "IssueTypeId", "IssueType"),
-                VisiblityDefaults = visibility
-            };
+            
+            //TODO: Set defaults values
+            viewModel.ProjectName = project.ProjectName;
+            viewModel.ProjectId = projectId;
+            //AffectedMilestones = new SelectList(_context.BugNet_ProjectMilestones, "MilestoneId", "IssueAffectedMilestone"),
+            viewModel.Categories = new SelectList(_context.BugNet_ProjectCategories.Where(c => c.ProjectId == projectId).ToList(), "CategoryId", "IssueCategory");
+            viewModel.Milestones = new SelectList(_context.BugNet_ProjectMilestones.Where(c => c.ProjectId == projectId).ToList(), "MilestoneId", "IssueMilestone");
+            viewModel.Users = new SelectList(_context.BugNet_UserProjects.Include(up => up.User).Where(up => up.ProjectId == projectId), "Id", "IssueOwnerUser");
+            viewModel.Priorities = new SelectList(_context.BugNet_ProjectPriorities.Where(c => c.ProjectId == projectId).ToList(), "PriorityId", "IssuePriority");
+            viewModel.Resolutions = new SelectList(_context.BugNet_ProjectResolutions.Where(c => c.ProjectId == projectId).ToList(), "ResolutionId", "IssueResolution");
+            viewModel.Status = new SelectList(_context.BugNet_ProjectStatus.Where(c => c.ProjectId == projectId).ToList(), "StatusId", "IssueStatus");
+            viewModel.IssueTypes = new SelectList(_context.BugNet_ProjectIssueTypes.Where(c => c.ProjectId == projectId).ToList(), "IssueTypeId", "IssueType");
+            viewModel.VisiblityDefaults = visibility;
 
             return View(viewModel);
         }
